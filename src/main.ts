@@ -1,16 +1,22 @@
 import "dotenv/config";
-import OpenAI from "openai";
+import OpenAIService from "./services/openai";
+import fs from "fs";
 
-const openaiApiKey = process.env.OPEN_AI_KEY;
+async function main() {
+  console.log("Starting presentation improvement process...");
+  const file = fs.createReadStream(process.env.PRESENTATION_PATH || "");
+  const uploadResponse = await OpenAIService.uploadFile(file);
+  console.log("File uploaded:", uploadResponse.id);
 
-if (!openaiApiKey) {
-  throw new Error("OPENAI_API_KEY is not set in environment variables.");
+  const improvementResponse = await OpenAIService.improvePresentation(
+    uploadResponse.id
+  );
+  console.log("Improvement response:", improvementResponse);
+
+  fs.writeFileSync(
+    "improved_presentation_feedback.md",
+    improvementResponse.output_text
+  );
 }
-
-const openai = new OpenAI({
-  apiKey: openaiApiKey,
-});
-
-function main() {}
 
 main();
