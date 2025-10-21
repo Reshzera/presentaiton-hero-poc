@@ -1,0 +1,13 @@
+{
+  "name": "presentation-hero-poc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "typescript": "^5.9.3"
+  }
+}
