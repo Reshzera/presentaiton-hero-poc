@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"
   },
   "dependencies": {
+    "dotenv": "^17.2.3",
+    "openai": "^6.6.0",
     "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.9.1"
   }
 }
