@@ -3,7 +3,6 @@ import OpenAIService from "./services/openai";
 import fs from "fs";
 
 async function main() {
-  //
   console.log("Starting presentation improvement process...");
   const file = fs.createReadStream(process.env.PRESENTATION_PATH || "");
   const uploadResponse = await OpenAIService.uploadFile(file);
